@@ -34,8 +34,8 @@ function Header() {
         </ul>
 
         <div className="space-x-4 font-semibold">
-          <Link to={"/login"} className="rounded-lg border bg-green-600 text-white px-4 py-2 hover:bg-green-700 transition">Login</Link>
-          <Link to={"/register"} className="rounded-lg border border-white px-4 py-2 hover:bg-white hover:text-black transition">Sign Up</Link>
+          <Link to={"/chooser"} className="rounded-lg border bg-green-600 text-white px-4 py-2 hover:bg-green-700 transition">Login</Link>
+          <Link to={"/chooser"} className="rounded-lg border border-white px-4 py-2 hover:bg-white hover:text-black transition">Sign Up</Link>
         </div>
       </header>
 

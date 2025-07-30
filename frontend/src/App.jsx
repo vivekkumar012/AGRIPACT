@@ -4,6 +4,7 @@ import './App.css'
 import Layout from './components/Layout'
 import Login from './pages/Login'
 import Signup from './pages/Signup';
+import Chooser from './pages/Chooser';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path='/' element={<Layout />} /> 
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Signup />} />
+      <Route path='/chooser' element={<Chooser />} />
      
     </Routes>
      <Toaster />
