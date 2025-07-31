@@ -1,4 +1,5 @@
 import React from 'react'
+import videoPic from '../assets/laptop.png'
 
 function Guidelines() {
   return (
@@ -17,11 +18,9 @@ function Guidelines() {
                 <li className="text-2xl mr-4 my-4">Stay updated by Your own login id.</li>
             </ul>
         </div>
-        {/*
         <div className="h-1/2 w-1/2">
           <img src={videoPic} className="" alt="" />
         </div>
-         */}
       </div>
     </div>
   )
