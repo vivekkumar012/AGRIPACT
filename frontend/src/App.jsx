@@ -8,6 +8,7 @@ import Chooser from './pages/Chooser';
 import Footer from './pages/Footer';
 import Guidelines from './pages/Guidelines';
 import About from './pages/About';
+import Account from './pages/Account';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Route path='/chooser' element={<Chooser />} />
       <Route path='/guidelines' element={<Guidelines />} />
       <Route path='/about' element={<About />} />
+      <Route path='/account' element={<Account />} />
      
     </Routes>
      <Toaster />
