@@ -1,14 +1,32 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Signup() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/register",
+        {
+          withCredentials: true,
+        },
+        {
+          username: username,
+          email: email,
+          password: password,
+        }
+      );
+      toast.success("Signup Successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error("Registration failed, try again later");
+    }
   };
 
   return (
@@ -18,12 +36,24 @@ function Signup() {
         <div>
           <header className="flex justify-between items-center absolute top-0 left-0 w-full p-5">
             <div className="flex items-center space-x-2">
-              <img src="" alt="" className="h-10 w-10 rounded-full"/>
-              <Link to={"/"} className="text-2xl font-bold text-orange-500">AgriPact</Link>
+              <img src="" alt="" className="h-10 w-10 rounded-full" />
+              <Link to={"/"} className="text-2xl font-bold text-orange-500">
+                AgriPact
+              </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to={"/login"} className="bg-transparent border border-gray-500 rounded-md py-2 px-4">Signin</Link>
-              <Link to={"/about"} className="bg-orange-500 rounded-md py-2 px-4">More Info</Link>
+              <Link
+                to={"/login"}
+                className="bg-transparent border border-gray-500 rounded-md py-2 px-4"
+              >
+                Signin
+              </Link>
+              <Link
+                to={"/about"}
+                className="bg-orange-500 rounded-md py-2 px-4"
+              >
+                More Info
+              </Link>
             </div>
           </header>
         </div>
@@ -77,7 +107,10 @@ function Signup() {
                 className="w-full bg-gray-700 border border-gray-800 p-3 rounded-md focus:outline-none focus:ring-0 focus:ring-blue-500"
               />
             </div>
-            <button type="submit" className="bg-orange-500 w-full px-6 py-3 rounded-md hover:bg-blue-600">
+            <button
+              type="submit"
+              className="bg-orange-500 w-full px-6 py-3 rounded-md hover:bg-blue-600"
+            >
               Signup
             </button>
           </form>

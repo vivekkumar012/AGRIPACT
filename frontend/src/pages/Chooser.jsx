@@ -15,12 +15,16 @@ function Chooser() {
             Are you looking for services or products? Click below to start
             browsing.
           </p>
-          <Link
-            to={"/login"}
-            className="bg-teal-800 hover:bg-teal-600 text-white font-semibold items-center py-2 px-4 rounded focus:outline-none focus:ring focus:ring-teal-300 transition-colors mt-12"
-          >
-            Login
-          </Link>
+          <Link to="/login">
+              <button
+                className="bg-teal-800 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-teal-300 transition-colors mt-12"
+                onClick={() => {
+                  localStorage.setItem("role", "farmer");
+                }}
+              >
+                Login
+              </button>
+            </Link>
         </div>
 
         <div className="rounded-md h-80 p-6 mx-4 my-4 mb-20 w-70 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl shadow-teal-200 border-double border-2 bg-blue-400 mr-50">
@@ -30,12 +34,16 @@ function Chooser() {
             Do you want to offer your services or products? Click below to get
             started.
           </p>
-          <Link
-            to={"/login"}
-            className="bg-teal-800 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-teal-300 transition-colors mt-12"
-          >
-            Login
-          </Link>
+          <Link to="/login">
+              <button
+                onClick={() => {
+                  localStorage.setItem("role", "vendor");
+                }}
+                className="bg-teal-800 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-teal-300 transition-colors mt-12"
+              >
+                Login
+              </button>
+            </Link>
         </div>
       </div>
     </div>

@@ -1,18 +1,38 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [redirect, setRedirect] = useState(false);
+  const role = localStorage.getItem('role');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("/")
+        const response = await axios.post("http://localhost:3001/login", {
+          withCredentials: true,
+        }, {
+          email,
+          password
+        })
+        toast.success("Login Successfull");
+        setRedirect(true);
+
     } catch (error) {
         console.log(error);
+        toast.error("Login failed");
+    }
+  }
+
+  if(redirect) {
+    if(role == 'farmer') {
+      return <Navigate to={"/account"} />
+    } else {
+      return <Navigate to={"/vendor"} />
     }
   }
 
