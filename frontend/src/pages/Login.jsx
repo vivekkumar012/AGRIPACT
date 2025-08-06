@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link, Navigate } from "react-router-dom";
+import logo from '../assets/logo.png'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -42,8 +43,8 @@ function Login() {
         {/* Header */}
         <header className='absolute top-0 left-0 w-full flex items-center justify-between p-5'>
           <div className='flex items-center space-x-2'>
-            <img src='' alt="" className='h-10 w-10 rounded-full'/>
-            <Link to={"/"} className='text-2xl font-bold text-orange-500'>Agripact</Link>
+            <img src={logo} alt="" className='h-10 w-10 rounded-full'/>
+            <Link to={"/"} className='text-2xl font-bold text-orange-500'>AgriPact</Link>
           </div>
           <div className='flex items-center space-x-4'>
               <Link to={"/register"} className='bg-transparent border border-gray-500 rounded-md py-2 px-4'>Signup</Link>

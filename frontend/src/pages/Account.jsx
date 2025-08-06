@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import AccountNav from '../components/AccountNav';
 
 function Account() {
+  const [redirect, setRedirect] = useState(null);
+
   return (
     <div>
-      Account page
+      <AccountNav />
+      <div>
+        This is the frnt pagah
+      </div>
     </div>
   )
 }

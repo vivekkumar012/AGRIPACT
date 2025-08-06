@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import logo from '../assets/logo.png'
 
 function Signup() {
   const [username, setUserName] = useState("");
@@ -36,7 +37,7 @@ function Signup() {
         <div>
           <header className="flex justify-between items-center absolute top-0 left-0 w-full p-5">
             <div className="flex items-center space-x-2">
-              <img src="" alt="" className="h-10 w-10 rounded-full" />
+              <img src={logo} alt="" className="h-10 w-10 rounded-full" />
               <Link to={"/"} className="text-2xl font-bold text-orange-500">
                 AgriPact
               </Link>
