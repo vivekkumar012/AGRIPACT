@@ -51,6 +51,17 @@ function Account() {
         </div>
       </div>
     </div>
+    {subpage === "profile" && (
+        <div>
+          {/* Logged in as {user.name} ({user.email})<br /> */}
+
+          {role === "vendor" && <DashBoard />}
+        </div>
+      )}
+      {subpage === "places" && <PlacesPage />}
+      {subpage === "account/bookings" && <BookingsPage />}
+      <BookingPage />
+    </div>
   );
 }
 
