@@ -1,6 +1,6 @@
 import { jwt } from 'jsonwebtoken';
 
-const isAuthenticate = (req, res, next) => {
+const isAuthenticate = async (req, res, next) => {
     try {
         const token = req.body.token;
         if(!token) {
