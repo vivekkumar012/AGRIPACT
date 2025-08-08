@@ -1,7 +1,15 @@
-import React, { useState } from "react";
-import AccountNav from "../components/AccountNav";
+import { useContext, useState } from "react";
+import { UserContext } from "../UserContext.jsx";
+import { Link, Navigate, useParams } from "react-router-dom";
+import axios from "axios";
+import PlacesPage from "./PlacesPage";
+import AccountNav from "../components/AccountNav.jsx";
+import BookingsPage from "./BookingsPage.jsx";
+import BookingPage from "./BookingPage.jsx";
+import DashBoard from "../components/DashBoard.jsx";
+import ProfileCard from "../components/ProfileCard.jsx";
 
-function Account() {
+export default function AccountPage() {
   const [redirect, setRedirect] = useState(null);
   const { ready, user, setUser } = useContext(UserContext);
   let { subpage } = useParams();
@@ -9,6 +17,7 @@ function Account() {
     subpage = "profile";
   }
   const role = localStorage.getItem("role");
+
   async function logout() {
     await axios.post("http://localhost:5000/logout");
     setRedirect("/");
@@ -29,13 +38,14 @@ function Account() {
   return (
     <div>
       <AccountNav />
+      {/* <div></div> */}
       <div className="flex items-center justify-center">
         <div className="max-w-md rounded overflow-hidden shadow-lg w-full">
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">User Profile</div>
             <div className="mb-4">
               <p className="text-gray-700 text-base">
-                User: <span class="font-bold">{user.name}</span>
+                User: <span className="font-bold">{user.name}</span>
               </p>
               <p className="text-gray-700 text-base">
                 Email: <span className="font-bold">{user.email}</span>
@@ -50,8 +60,8 @@ function Account() {
           </div>
         </div>
       </div>
-    </div>
-    {subpage === "profile" && (
+
+      {subpage === "profile" && (
         <div>
           {/* Logged in as {user.name} ({user.email})<br /> */}
 
@@ -64,5 +74,3 @@ function Account() {
     </div>
   );
 }
-
-export default Account;
