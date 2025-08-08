@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import userRouter from './Routes/userRouter.js';
 
 const app = express();
 
@@ -15,6 +16,9 @@ try {
         message: "Error in MongoDB"
     })
 }
+
+//apis
+app.use("/api/v1/user", userRouter);
 
 
 const port = 3001 || process.env.PORT;
