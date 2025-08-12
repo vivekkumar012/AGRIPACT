@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Image from "./Image.jsx";
+import Image from "../assets/logo.png";
 
 export default function PlaceGallery({ place }) {
   const [showAllPhotos, setShowAllPhotos] = useState(false);

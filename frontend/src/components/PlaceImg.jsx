@@ -1,4 +1,4 @@
-import Image from "./Image.jsx";
+import Image from "../assets/logo.png";
 
 export default function PlaceImg({ place, index = 0, className = "w-64" }) {
   if (!place.photos?.length) {
