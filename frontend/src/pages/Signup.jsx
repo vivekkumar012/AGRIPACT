@@ -1,124 +1,185 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
-import logo from '../assets/logo.png'
+import frameImg from "../assets/frame.png";
+import image from "../assets/signup.webp";
+import Navbar from "../components/Header";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
-function Signup() {
+function Register() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("student");
 
-  const handleSignup = async (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/register",
-        {
-          withCredentials: true,
-        },
-        {
-          username: username,
-          email: email,
-          password: password,
-        }
-      );
-      toast.success("Signup Successfully");
-    } catch (error) {
-      console.log(error);
-      toast.error("Registration failed, try again later");
-    }
+
+    // const userData = { username, email, password, role };
+
+    // try {
+    //   const res = await axios.post("http://localhost:5000/api/auth/register", userData);
+
+    //   if (res.status === 201) {
+    //     alert("✅ Registration successful!");
+    //     setUserName("");
+    //     setEmail("");
+    //     setPassword("");
+    //     setRole("student");
+    //     navigate("/login");
+    //   }
+    // } catch (err) {
+    //   if (err.response) {
+    //     alert("❌ " + err.response.data.message);
+    //   } else {
+    //     alert("❌ Something went wrong!");
+    //   }
+    // }
   };
 
   return (
-    <div className="bg-gradient-to-r from-yellow-700 to-blue-800 h-screen">
-      <div className="flex items-center justify-center mx-auto container h-screen text-white">
-        {/* Header */}
-        <div>
-          <header className="flex justify-between items-center absolute top-0 left-0 w-full p-5">
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="" className="h-10 w-10 rounded-full" />
-              <Link to={"/"} className="text-2xl font-bold text-orange-500">
-                AgriPact
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                to={"/login"}
-                className="bg-transparent border border-gray-500 rounded-md py-2 px-4"
-              >
-                Signin
-              </Link>
-              <Link
-                to={"/about"}
-                className="bg-orange-500 rounded-md py-2 px-4"
-              >
-                More Info
-              </Link>
-            </div>
-          </header>
-        </div>
-        <div className="w-[500px] shadow-lg bg-gray-600 rounded-lg p-8 mt-20">
-          <h2 className="text-2xl font-bold text-center mb-4 text-orange-500">
-            Sign Up{" "}
-          </h2>
-          <p className="text-xl font-semibold mb-4 text-center text-gray-400">
-            Register for new User
-          </p>
-          <form onSubmit={handleSignup}>
-            <div className="mb-4">
-              <label htmlFor="ussername" className="text-gray-400">
-                UserName
-              </label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUserName(e.target.value)}
-                placeholder="Enter Your Username"
-                required
-                className="w-full bg-gray-700 border border-gray-800 p-3 rounded-md focus:outline-none focus:ring-0 focus:ring-blue-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="text-gray-400">
-                Email
-              </label>
-              <input
-                type="text"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="demo@gmail.com"
-                required
-                className="w-full bg-gray-700 border border-gray-800 p-3 rounded-md focus:outline-none focus:ring-0 focus:ring-blue-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="password" className="text-gray-400">
-                Password
-              </label>
-              <input
-                type="text"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="*******"
-                required
-                className="w-full bg-gray-700 border border-gray-800 p-3 rounded-md focus:outline-none focus:ring-0 focus:ring-blue-500"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-orange-500 w-full px-6 py-3 rounded-md hover:bg-blue-600"
+    <div>
+      {/* <Navbar /> */}
+      {/* Header */}
+
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center bg-gradient-to-r from-blue-100 via-white to-blue-50">
+        <header className="absolute top-0 left-0 w-full flex items-center justify-between p-5">
+          <div className="flex items-center space-x-2">
+            <img src={logo} alt="" className="h-10 w-10 rounded-full" />
+            <Link to={"/"} className="text-2xl font-bold text-orange-500">
+              AgriPact
+            </Link>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Link
+              to={"/login"}
+              className="bg-transparent border border-gray-500 rounded-md py-2 px-4"
             >
-              Signup
-            </button>
-          </form>
+              Login
+            </Link>
+            <Link to={"/about"} className="bg-orange-500 rounded-md py-2 px-4">
+              More Info
+            </Link>
+          </div>
+        </header>
+        <br /> <br /> <br />
+        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col-reverse justify-between gap-y-12 py-12 md:flex-row md:gap-y-0 md:gap-x-16">
+          {/* Left Form Section */}
+          <div className="mx-auto w-11/12 max-w-[450px] md:mx-0 bg-white rounded-2xl shadow-lg p-8">
+            <h1 className="text-3xl font-bold text-gray-800">
+              Join the millions learning to code with{" "}
+              <span className="text-blue-600">VidyaSetu</span>
+            </h1>
+            <p className="mt-2 text-gray-600 text-lg">
+              Build skills for today, tomorrow, and beyond.
+              <br />
+              <span className="italic font-semibold text-blue-500">
+                Future-proof your career.
+              </span>
+            </p>
+
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+              {/* Username */}
+              <div>
+                <label className="block text-gray-700 font-medium">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUserName(e.target.value)}
+                  placeholder="Enter your username"
+                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  required
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-gray-700 font-medium">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  required
+                />
+              </div>
+
+              {/* Password */}
+              <div>
+                <label className="block text-gray-700 font-medium">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  required
+                />
+              </div>
+
+              {/* Role Selection */}
+              <div>
+                <label className="block text-gray-700 font-medium">Role</label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+                </select>
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                className="w-full rounded-lg px-4 py-3 bg-blue-500 text-white font-semibold text-lg hover:bg-blue-600 transition duration-200 shadow-md"
+              >
+                Sign Up
+              </button>
+            </form>
+
+            <span className="block text-center mt-4 text-gray-600">
+              Already have an account?{" "}
+              <a
+                href="/login"
+                className="text-blue-500 font-semibold hover:underline"
+              >
+                Login
+              </a>
+            </span>
+          </div>
+
+          {/* Right Image Section */}
+          <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0 mt-8">
+            <img
+              src={frameImg}
+              alt="Pattern"
+              width={558}
+              height={504}
+              loading="lazy"
+              className="rounded-xl"
+            />
+            <img
+              src={image}
+              alt="Students"
+              width={558}
+              height={504}
+              loading="lazy"
+              className="absolute -top-6 right-6 z-10 rounded-xl"
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default Register;
