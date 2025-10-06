@@ -1,166 +1,182 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-import frameImg from "../assets/frame.png";
-import image from "../assets/signup.webp";
-import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import w from "../assets/w.png";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("student");
-  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    role: "farmer",
+  });
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleRoleChange = (role) => {
+    setFormData({ ...formData, role });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // try {
-    //   const res = await axios.post("http://localhost:5000/api/auth/login", {
-    //     email,
-    //     password,
-    //     role,
-    //   });
-
-    //   if (res.status === 200) {
-    //     alert("✅ Login successful!");
-
-    //     // Save token (optional for protected routes later)
-    //     localStorage.setItem("token", res.data.token);
-    //     localStorage.setItem("role", res.data.user.role);
-
-    //     // Redirect based on role
-    //     if (res.data.user.role === "student") {
-    //       navigate("/studentdashboard");
-    //     } else if (res.data.user.role === "teacher") {
-    //       navigate("/teacherdashboard");
-    //     }
-    //   }
-    // } catch (err) {
-    //   if (err.response) {
-    //     alert("❌ " + err.response.data.message);
-    //   } else {
-    //     alert("❌ Something went wrong!");
-    //   }
-    // }
+    // Handle registration logic here
+    console.log("Registration data:", formData);
   };
 
   return (
-    <div>
-      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center bg-gradient-to-r from-blue-100 via-white to-blue-50">
-        <header className="absolute top-0 left-0 w-full flex items-center justify-between p-5">
-          <div className="flex items-center space-x-2">
-            <img src={logo} alt="" className="h-10 w-10 rounded-full" />
-            <Link to={"/"} className="text-2xl font-bold text-orange-500">
-              AgriPact
-            </Link>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link
-              to={"/register"}
-              className="bg-transparent border border-gray-500 rounded-md py-2 px-4"
-            >
-              Sign Up
-            </Link>
-            <Link to={"/about"} className="bg-orange-500 rounded-md py-2 px-4">
-              More Info
-            </Link>
-          </div>
-        </header>
-        <br /> <br /> <br />
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col-reverse justify-between gap-y-12 py-12 md:flex-row md:gap-y-0 md:gap-x-16">
-          {/* Left Form Section */}
-          <div className="mx-auto w-11/12 max-w-[450px] md:mx-0 bg-white rounded-2xl shadow-lg p-8">
-            <h1 className="text-3xl font-bold text-gray-800">
-              Login to <span className="text-blue-600">VidyaSetu</span>
-            </h1>
-            <p className="mt-2 text-gray-600 text-lg">
-              Build skills for today, tomorrow, and beyond.
-              <br />
-              <span className="italic font-semibold text-blue-500">
-                Future-proof your career.
-              </span>
-            </p>
+    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-green-50 via-emerald-50 to-green-100">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23059669' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        ></div>
+      </div>
 
-            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
-              {/* Email */}
-              <div>
-                <label className="block text-gray-700 font-medium">Email</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  required
-                />
+      {/* Header */}
+      <header className="relative z-10 px-6 py-6">
+        <Link to={"/"} className="flex items-center space-x-3 group w-fit">
+          <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-green-500/50 transition-all duration-300 group-hover:scale-110">
+            <img src={w} alt="Logo" className="w-6 h-6 object-contain" />
+          </div>
+          <span className="font-bold text-2xl tracking-wide bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
+            AgriPact
+          </span>
+        </Link>
+      </header>
+
+      {/* Registration Form */}
+      <div className="relative z-10 flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-md">
+          {/* Form Container */}
+          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 backdrop-blur-sm border border-green-100">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+                Login into Account
+              </h1>
+              <p className="text-gray-600 mt-2">
+                Join AgriPact and start your journey
+              </p>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-3">
+              {/* Role Selection */}
+              <div className="flex justify-center gap-4 mb-4">
+                <button
+                  type="button"
+                  onClick={() => handleRoleChange("farmer")}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 font-semibold transition-all duration-300 ${
+                    formData.role === "farmer"
+                      ? "bg-gradient-to-r from-emerald-500 to-lime-500 text-white border-transparent shadow-lg"
+                      : "border-gray-200 text-gray-700 hover:border-emerald-400"
+                  }`}
+                >
+                  <User className="h-5 w-5" /> Farmer
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleRoleChange("buyer")}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 font-semibold transition-all duration-300 ${
+                    formData.role === "buyer"
+                      ? "bg-gradient-to-r from-emerald-500 to-lime-500 text-white border-transparent shadow-lg"
+                      : "border-gray-200 text-gray-700 hover:border-emerald-400"
+                  }`}
+                >
+                  <User className="h-5 w-5" /> Buyer
+                </button>
+              </div>
+              
+              {/* Email Field */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Email Address
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Mail className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/10 outline-none transition-all duration-300"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
               </div>
 
-              {/* Password */}
-              <div>
-                <label className="block text-gray-700 font-medium">
+              {/* Password Field */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-semibold text-gray-700"
+                >
                   Password
                 </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  required
-                />
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Lock className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="w-full pl-12 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/10 outline-none transition-all duration-300"
+                    placeholder="Enter Password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
               </div>
 
-              {/* Role Selection */}
-              <div>
-                <label className="block text-gray-700 font-medium">Role</label>
-                <select
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                >
-                  <option value="student">Student</option>
-                  <option value="teacher">Teacher</option>
-                </select>
-              </div>
-
-              {/* Submit */}
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full rounded-lg px-4 py-3 bg-blue-500 text-white font-semibold text-lg hover:bg-blue-600 transition duration-200 shadow-md"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-3 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/50 hover:scale-[1.02] flex items-center justify-center space-x-2 group"
               >
-                Login
+                <span>Create Account</span>
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
 
-            <span className="block text-center mt-4 text-gray-600">
-              Don’t have an account?{" "}
-              <a
-                href="/register"
-                className="text-blue-500 font-semibold hover:underline"
+            {/* Login Link */}
+            <p className="text-center text-gray-600 mt-8">
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="text-green-600 hover:text-green-700 font-semibold"
               >
-                Register
-              </a>
-            </span>
-          </div>
-
-          {/* Right Image Section */}
-          <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0 mt-8">
-            <img
-              src={frameImg}
-              alt="Pattern"
-              width={558}
-              height={504}
-              loading="lazy"
-              className="rounded-xl"
-            />
-            <img
-              src={image}
-              alt="Students"
-              width={558}
-              height={504}
-              loading="lazy"
-              className="absolute -top-6 right-6 z-10 rounded-xl"
-            />
+                Sign Up
+              </Link>
+            </p>
           </div>
         </div>
       </div>
