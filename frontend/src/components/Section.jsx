@@ -1,37 +1,58 @@
-import React from 'react'
-import vector11 from '../assets/vector11.svg'
-import vector22 from '../assets/vector22.svg'
-import vector33 from '../assets/vector33.svg'
+import React from "react";
+import vector11 from "../assets/vector11.svg";
+import vector22 from "../assets/vector22.svg";
+import vector33 from "../assets/vector33.svg";
 
 function Section() {
+  const features = [
+    {
+      image: vector11,
+      title: "24×7 Customer Support",
+      desc: "We’re always here to help — anytime, anywhere.",
+    },
+    {
+      image: vector22,
+      title: "Trusted Sellers & Buyers",
+      desc: "Ensuring secure and reliable trading every time.",
+    },
+    {
+      image: vector33,
+      title: "One-Click Booking",
+      desc: "Fast, easy, and time-saving booking experience.",
+    },
+  ];
+
   return (
-    <div className='h-2/5 p-10'>
-      <h1 className='text-2xl font-semibold uppercase text-center'>What we Offer</h1>
-      <p className='text-lg text-center mt-3 mb-[100px] opacity-90'>Being a part of AgriPact</p>
-
-      <div className='flex justify-center items-center mb-[100px] mediaQuery'>
-         <div className='mx-5 p-9 rounded-2xl bg-white shadow-md mb-2.5'>
-            <img src={vector11} alt="" className='h-70 w-70 mx-auto'/>
-            <h3 className='text-xl mb-1 text-center font-semibold mt-5'>24*7 Customer Support</h3>
-            <p className='text-md text-center font-normal'>We’re just one call away.</p>
-        </div>
-
-        <div className='mx-5 p-9 rounded-2xl bg-white shadow-md mb-2.5'>
-            <img src={vector22} alt="" className='h-70 w-70 mx-auto'/>
-            <h3 className='text-xl mb-1 text-center font-semibold mt-5'>Trusted Sellers/Buyers</h3>
-            <p className='text-md text-center font-normal'>Ensured safety of your experience.</p>
-        </div>
-
-
-        <div className='mx-5 p-9 rounded-2xl bg-white shadow-md mb-2.5'>
-            <img src={vector33} alt="" className='h-70 w-70 mx-auto'/>
-            <h3 className='text-xl mb-1 text-center font-semibold mt-5'>One-click Booking</h3>
-            <p className='text-md text-center font-normal'>Time saving bookings.</p>
-        </div>
-
+    <section className="bg-gradient-to-b from-green-50 to-green-100 py-16 px-6 md:px-20">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <h1 className="text-3xl md:text-4xl font-bold text-green-700 uppercase tracking-wide">
+          What We Offer
+        </h1>
+        <p className="text-lg text-gray-700 mt-3 opacity-90">
+          Being a part of <span className="font-semibold text-green-700">AgriPact</span>
+        </p>
       </div>
-    </div>
-  )
+
+      {/* Features */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        {features.map((item, idx) => (
+          <div
+            key={idx}
+            className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center"
+          >
+            <div className="h-24 w-24 flex items-center justify-center bg-green-100 rounded-full mb-6">
+              <img src={item.image} alt={item.title} className="h-12 w-12" />
+            </div>
+            <h3 className="text-xl font-semibold text-green-700 mb-3">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 text-base">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
-export default Section
+export default Section;

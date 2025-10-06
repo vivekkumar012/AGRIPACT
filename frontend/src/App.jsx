@@ -1,11 +1,10 @@
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Chooser from "./pages/Chooser";
-import Footer from "./pages/Footer";
+
 import Guidelines from "./pages/Guidelines";
 import About from "./pages/About";
 
