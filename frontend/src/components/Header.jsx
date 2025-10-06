@@ -11,7 +11,7 @@ function Header() {
         className="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-700"
         style={{
           backgroundImage:
-            "url('https://www.shutterstock.com/image-photo/farmer-using-tablet-standing-wheat-600nw-1767436760.jpg')",
+            "url('https://media.istockphoto.com/id/1453962739/photo/the-middle-aged-indian-farmer-is-smiling-while-showing-his-monthly-income-indian-model.jpg?s=612x612&w=0&k=20&c=YdevYcNxwoQB1efBaOzATJywHHarzzpXAQ7Sd_fTniY=')",
         }}
       ></div>
 
