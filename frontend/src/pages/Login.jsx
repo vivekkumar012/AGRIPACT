@@ -31,9 +31,20 @@ function Login() {
     try {
       const res = await axios.post("http://localhost:3001/api/v1/user/login", formData);
       if(res.status == 200) {
-        toast.success("Login Successfully");
-        navigate("/farmerDashboard");
-      }
+        const {user, token} = res.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", user.role);
+
+        toast.success("Login successfully");
+        if(user.role == "farmer") {
+          navigate("/farmerDashboard");
+
+        } else if(user.role == "buyer") {
+          navigate("/buyerDashboard");
+        } else {
+          navigate("/");
+        }
+      } 
     } catch (error) {
       if(error.response) {
         alert("Error in Login!!");
