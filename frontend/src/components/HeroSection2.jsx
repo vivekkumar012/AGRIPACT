@@ -8,14 +8,14 @@ function HeroSection2() {
   const Schemes = [
     {
       image:
-        "https://images.openai.com/thumbnails/url/ATinZXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5x9Yo3dXT3KDIpCjVOy4lML65wikwpjszK9g5IcwovMPXwc46qjHLNiExLVyu2NTQAAAw0JT4",
+        "https://imgs.search.brave.com/fjXdvebLxc1qjhwjdz1lCngBAPS14ixfmB-LqwmJn2c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/amFncmFuam9zaC5j/b20vaW1hZ2VzLzIw/MjQvRmVicnVhcnkv/MjkyMjAyNC9QcmFk/aGFuLU1hbnRyaS1L/aXNhbi1TYW1tYW4t/TmlkaGktWW9qYW5h/LWFsbC1kZXRhaWxz/LWluLWhpbmRpLndl/YnA",
       title: "Pradhan Mantri Kisan Samman Nidhi",
       description:
         "Provides direct income support of ₹6,000 per year to eligible small & marginal farmers, disbursed in three equal installments via DBT. Helps with costs like seeds, fertilizers, etc.",
     },
     {
       image:
-        "https://images.openai.com/thumbnails/url/Nun0uHicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7KdTaPCvEwTwso9E_LNvN2rfR2Sk4KT01LyvGM8IzMCY9I8XFyz0zWjTctVyu2NTQAAAksJOs",
+        "https://imgs.search.brave.com/n9re8o6AQ23Y-Ix33Ac-wQvbnA-kstxW5RAKITv0QkQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWNpbWcuYW1hcnVq/YWxhLmNvbS9hc3Nl/dHMvaW1hZ2VzLzIw/MjQvMDQvMTQvcG0t/a2lzYW4tc2FtbWFu/LW5pZGhpLXlvamFu/YV84ZWFkOWNhOGQ0/N2VhZjUwNDE2ZGQ4/OGI3YTEwZDc0NC5q/cGVnP3E9ODA",
       title: "PM-Kisan MaanDhan Yojana",
       description:
         "A pension scheme for small & marginal farmers aged between 18-40 years. They contribute monthly (a small amount), government matches, and on reaching 60 years, farmers receive a monthly pension of ₹3,000.",

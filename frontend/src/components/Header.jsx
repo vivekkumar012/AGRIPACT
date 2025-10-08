@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Home, Users, Briefcase, FileText } from "lucide-react";
 import w from "../assets/w.png";
+import background from "../assets/farmer dashboard-pica.png"
 
 function Header() {
   return (
@@ -11,7 +12,7 @@ function Header() {
         className="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-700"
         style={{
           backgroundImage:
-            "url('https://media.istockphoto.com/id/1453962739/photo/the-middle-aged-indian-farmer-is-smiling-while-showing-his-monthly-income-indian-model.jpg?s=612x612&w=0&k=20&c=YdevYcNxwoQB1efBaOzATJywHHarzzpXAQ7Sd_fTniY=')",
+            `url(${background})`,
         }}
       ></div>
 
@@ -97,9 +98,9 @@ function Header() {
           
           {/* Optional CTA */}
           <div className="mt-12 flex justify-center gap-6">
-            <button className="px-8 py-4 rounded-xl bg-green-600 text-white font-semibold text-lg hover:bg-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/50 hover:scale-105">
+            <Link to={"/register"} className="px-8 py-4 rounded-xl bg-green-600 text-white font-semibold text-lg hover:bg-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/50 hover:scale-105">
               Get Started
-            </button>
+            </Link>
             <button className="px-8 py-4 rounded-xl border-2 border-white/50 backdrop-blur-md text-white font-semibold text-lg hover:bg-white hover:text-green-600 transition-all duration-300 shadow-2xl hover:scale-105">
               Learn More
             </button>

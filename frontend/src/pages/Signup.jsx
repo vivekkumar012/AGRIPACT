@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import w from "../assets/w.png";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,10 +25,27 @@ function Register() {
     setFormData({ ...formData, role });
   };
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log("Registration data:", formData);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/register",
+        formData
+      );
+      if (response.status == 200) {
+        toast.success("Registration Successfully");
+        navigate("/login");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(`❌ ${error.response.data.message}`);
+      } else {
+        alert("Server not responding");
+      }
+      console.log(error);
+    }
   };
 
   return (

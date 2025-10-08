@@ -1,21 +1,73 @@
 import userModel from "../Models/userModel.js"
 import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
+import bcrypt, { hash } from "bcrypt"
 import validator from "validator"
 import cookieParser from 'cookie-parser';
+
+// Register User
+export const registerUser = async (req, res) => {
+    const { username, email, password, role } = req.body;
+
+    try {
+        if (!username || !email || !password || !role) {
+            return res.status(400).json({
+                message: "All Fields are required!!"
+            })
+        }
+
+        const ExistUser = await userModel.findOne({
+            email: email
+        })
+
+        if (ExistUser) {
+            return res.status(400).json({
+                message: "User already exist with this mail"
+            })
+        }
+
+        const hashPass = await bcrypt.hash(password, 10);
+
+        const user = await userModel.create({
+            username,
+            email,
+            password: hashPass,
+            role,
+        })
+
+        res.status(200).json({
+            message: "User registered successfully",
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                password: user.password,
+                role: user.role
+            }
+        })
+
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, message: "Error in register" })
+    }
+}
 
 //Login User
 export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "All fields are required for login"
+            })
+        }
+
         const user = await userModel.findOne({ email });
 
-        //if user doesn't exists
         if (!user) {
             return res.json({ success: false, message: "User doesn't exist" })
         }
 
-        // matching user password with given password
         const isMatch = await bcrypt.compare(password, user.password);
 
         //if not match
@@ -24,57 +76,30 @@ export const loginUser = async (req, res) => {
         }
 
         const token = jwt.sign({
-            id: user._id
-        }, process.env.JWT_SECRET);
+            id: user._id,
+            role: user.role
+        }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
         res.json({
             message: "User Successfully Login",
             token,
-            success: true
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role,
+            },
         })
 
     } catch (err) {
         console.log(err);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Error in Login user" })
     }
 }
 
-// Register User
-export const registerUser = async (req, res) => {
-    const { fullname, email, password } = req.body;
-
-    try {
-        //checking is User already exists?
-        const exists = await userModel.findOne({ email });
-        if (exists) {
-            return res.json({ success: false, message: "User already exists" })
-        }
-
-        //hashing user password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        //New user
-        const newUser = new userModel({
-            fullname: fullname,
-            email: email,
-            password: hashedPassword
-        })
-
-        const user = await newUser.save();
-        const token = createToken(user._id);
-
-        res.json({ success: true, token })
-
-
-    } catch (err) {
-        console.log(err);
-        res.json({ success: false, message: "Error" })
-    }
-}
-
-export const logout = (req, res) => {
-    res.cookie('token', '').json(true);
-};
+// export const logout = (req, res) => {
+//     res.cookie('token', '').json(true);
+// };
 
 export const getProfile = async (req, res) => {
     try {
