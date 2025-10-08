@@ -1,8 +1,8 @@
-import express from 'express';
+// import express from 'express';
 
-const bookingRouter = express.Router();
+// const bookingRouter = express.Router();
 
-bookingRouter.post("/")
+// bookingRouter.post("/")
 
 
-export default bookingRouter;
+// export default bookingRouter;

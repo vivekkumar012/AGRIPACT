@@ -31,7 +31,7 @@ function Register() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/register",
+        "http://localhost:3001/api/v1/user/register",
         formData
       );
       if (response.status == 200) {

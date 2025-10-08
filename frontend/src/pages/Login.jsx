@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import w from "../assets/w.png";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +12,8 @@ function Login() {
     password: "",
     role: "farmer",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -22,10 +26,22 @@ function Login() {
     setFormData({ ...formData, role });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log("Registration data:", formData);
+    try {
+      const res = await axios.post("http://localhost:3001/api/v1/user/login", formData);
+      if(res.status == 200) {
+        toast.success("Login Successfully");
+        navigate("/farmerDashboard");
+      }
+    } catch (error) {
+      if(error.response) {
+        alert("Error in Login!!");
+      } else {
+        alert("Server Error");
+      }
+      console.log(error);
+    }
   };
 
   return (
@@ -162,7 +178,7 @@ function Login() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-3 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/50 hover:scale-[1.02] flex items-center justify-center space-x-2 group"
               >
-                <span>Create Account</span>
+                <span>Login</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

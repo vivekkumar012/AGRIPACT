@@ -8,6 +8,8 @@ import Signup from "./pages/Signup";
 import Guidelines from "./pages/Guidelines";
 import About from "./pages/About";
 
+import FarmerDashboard from './pages/FarmerDashboard'
+
 function App() {
   return (
     <div>
@@ -18,6 +20,8 @@ function App() {
 
         <Route path="/guidelines" element={<Guidelines />} />
         <Route path="/about" element={<About />} />
+
+        <Route path="/farmerDashboard" element={<FarmerDashboard />} />
       </Routes>
       <Toaster />
     </div>
