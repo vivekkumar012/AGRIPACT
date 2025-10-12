@@ -1,4 +1,4 @@
-import productModel from "../Models/productModel";
+import productModel from "../Models/productModel.js";
 
 export const createProduct = async (req, res) => {
     try {
@@ -91,7 +91,7 @@ export const allProducts = async (req, res) => {
             })
         }
         res.status(200).json({
-            message: "Products are: ",
+            message: " All Products are: ",
             products,
         })
     } catch (error) {

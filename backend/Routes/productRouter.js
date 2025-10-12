@@ -6,7 +6,7 @@ const productRouter = express.Router();
 
 productRouter.post("/create-product", isAuthenticate, createProduct);
 productRouter.post("/edit/:id", isAuthenticate, editProduct);
-productRouter.post("/delete/:id", isAuthenticate, deleteProduct);
-productRouter.post("/all", isAuthenticate, allProducts);
+productRouter.delete("/delete/:id", isAuthenticate, deleteProduct);
+productRouter.get("/all", isAuthenticate, allProducts);
 
 export default productRouter;

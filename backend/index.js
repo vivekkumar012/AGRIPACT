@@ -4,7 +4,8 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
 import userRouter from './Routes/userRouter.js';
-import placeRouter from './Routes/placeRouter.js';
+import productRouter from './Routes/productRouter.js';
+
 // import bookingRouter from './Routes/bookingRouter.js';
 // import uploadRouter from './Routes/uploadRouter.js';
 
@@ -31,9 +32,7 @@ try {
 
 //apis
 app.use("/api/v1/user", userRouter);
-app.use("/api/v1/places", placeRouter);
-// app.use("/api/v1/bookings", bookingRouter);
-// app.use("/api/v1/uploads", uploadRouter);
+app.use("/api/v1/product", productRouter);
 
 
 const port = 3001 || process.env.PORT;
