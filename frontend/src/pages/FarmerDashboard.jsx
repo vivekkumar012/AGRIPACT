@@ -397,7 +397,7 @@ const FarmerDashboard = () => {
               />
               <button
                 onClick={handleSubmit}
-                className="w-full py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition"
+                className="w-full py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition cursor-pointer"
               >
                 {editingProduct ? "Update Product" : "Add Product"}
               </button>
