@@ -8,8 +8,9 @@ import Signup from "./pages/Signup";
 import Guidelines from "./pages/Guidelines";
 import About from "./pages/About";
 
-import FarmerDashboard from './pages/FarmerDashboard'
+import FarmerDashboard from './pages/FarmerDashboard';
 import BuyerDashBoard from "./pages/BuyerDashBoard";
+import BuyerCheckout from "./pages/BuyerCheckOut";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
 
         <Route path="/farmerDashboard" element={<FarmerDashboard />} />
         <Route path="/buyerDashboard" element={<BuyerDashBoard />} />
+
+        <Route path="/buyer/checkout" element={<BuyerCheckout />} />
       </Routes>
       <Toaster />
     </div>
