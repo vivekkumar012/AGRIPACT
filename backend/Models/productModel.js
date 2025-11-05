@@ -18,15 +18,6 @@ const productSchema = new mongoose.Schema({
     parks: {
         type: String
     },
-    checkIn: {
-        type: String
-    },
-    checkOut: {
-        type: String
-    },
-    maxGuests: {
-        type: Number
-    },
     price: {
         type: Number
     },

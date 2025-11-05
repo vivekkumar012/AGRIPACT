@@ -1,57 +1,51 @@
 import mongoose from "mongoose";
 
-const orderSchema = new mongoose.Schema({
-    buyer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true
-    },
-    products: [{
-        product: {
+const orderSchema = new mongoose.Schema(
+    {
+        user: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Product",
-            required: true
+            ref: "User",
+            required: true,
         },
-        quantity: {
+        products: [
+            {
+                product: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "Product",
+                    required: true,
+                },
+                quantity: {
+                    type: Number,
+                    required: true,
+                    min: 1,
+                },
+                price: {
+                    type: Number,
+                    required: true,
+                },
+            },
+        ],
+        totalAmount: {
             type: Number,
             required: true,
-            default: 1
         },
-        price: {
-            type: Number,
-            required: true
-        }
-    }],
-    totalAmount: {
-        type: Number,
-        required: true
+        paymentMethod: {
+            type: String,
+            enum: ["cash", "card", "upi", "stripe"],
+            default: "cash",
+        },
+        orderStatus: {
+            type: String,
+            enum: ["pending", "processing", "shipped", "delivered", "cancelled"],
+            default: "pending",
+        },
+        address: {
+            type: String,
+            required: false,
+        },
     },
-    paymentStatus: {
-        type: String,
-        enum: ["pending", "completed", "failed"],
-        default: "pending",
-    },
-    orderStatus: {
-        type: String,
-        enum: ["processing", "shipped", "delivered", "cancelled"],
-        default: "processing",
-    },
-    address: {
-        fullName: String,
-        phone: String,
-        street: String,
-        city: String,
-        state: String,
-        postalCode: String,
-        country: String,
-    },
-    paymentMethod: {
-        type: String,
-        enum: ["COD", "Stripe", "Razorpay", "Paypal"],
-        default: "COD",
-    },
-})
+    { timestamps: true }
+);
 
-const orderModel = mongoose.model("Order", orderSchema);
-
-export default orderModel;
+const Order = mongoose.model("Order", orderSchema);
+export default Order;

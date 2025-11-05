@@ -2,7 +2,7 @@ import productModel from "../Models/productModel.js";
 
 export const createProduct = async (req, res) => {
     try {
-        const { title, address, photos, description, parks, checkIn, checkOut, maxGuests, price } = req.body;
+        const { title, address, photos, description, parks, price } = req.body;
 
         if (!title || !description) {
             return res.status(400).json({ success: false, message: "Title and description are required" });
@@ -14,9 +14,6 @@ export const createProduct = async (req, res) => {
             photos,
             description,
             parks,
-            checkIn,
-            checkOut,
-            maxGuests,
             price
         });
 
