@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
 import userRouter from './Routes/userRouter.js';
 import productRouter from './Routes/productRouter.js';
+import orderRouter from './Routes/orderRouter.js';
 
 // import bookingRouter from './Routes/bookingRouter.js';
 // import uploadRouter from './Routes/uploadRouter.js';
@@ -33,6 +34,7 @@ try {
 //apis
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/product", productRouter);
+app.use("/api/v1/order", orderRouter);
 
 
 const port = 3001 || process.env.PORT;

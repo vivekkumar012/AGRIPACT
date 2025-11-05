@@ -88,43 +88,19 @@ const BuyerDashboard = () => {
   const getTotalAmount = () =>
     cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  // Handle checkout — integrate backend order creation
-  const handleCheckout = async () => {
+  // Navigate to payment page with cart data
+  const handleCheckout = () => {
     if (cart.length === 0) {
-      toast.warn("Your cart is empty!");
+      toast.error("Your cart is empty!");
       return;
     }
 
-    try {
-      const token = localStorage.getItem("token");
-      const orderData = {
-        products: cart.map((item) => ({
-          product: item.product._id,
-          quantity: item.quantity,
-        })),
-        paymentMethod: "cash",
-        address: "Buyer default address",
-      };
-
-      const res = await axios.post(
-        "http://localhost:3001/api/v1/order/create",
-        orderData,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      if (res.data.success) {
-        toast.success("Order placed successfully!");
-        setCart([]);
-        setShowCart(false);
-      } else {
-        toast.error("Failed to place order!");
-      }
-    } catch (error) {
-      console.error("Checkout error:", error);
-      toast.error("Error while placing order!");
-    }
+    // Store cart data in localStorage for payment page
+    localStorage.setItem("cartData", JSON.stringify(cart));
+    localStorage.setItem("totalAmount", getTotalAmount().toString());
+    
+    // Navigate to payment page
+    navigate("/payment");
   };
 
   if (loading) {
@@ -164,7 +140,7 @@ const BuyerDashboard = () => {
             </button>
             <button
               onClick={handleLogout}
-              className="flex items-center bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-lg transition"
+              className="flex items-center bg-gray-200 hover:bg-red-400 text-gray-700 px-3 py-2 rounded-lg transition"
             >
               <LogOut size={18} className="mr-1" /> Logout
             </button>

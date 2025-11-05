@@ -10,7 +10,9 @@ import About from "./pages/About";
 
 import FarmerDashboard from './pages/FarmerDashboard';
 import BuyerDashBoard from "./pages/BuyerDashBoard";
-import BuyerCheckout from "./pages/BuyerCheckOut";
+
+import PaymentPage from "./pages/PaymentPage";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   return (
@@ -26,7 +28,9 @@ function App() {
         <Route path="/farmerDashboard" element={<FarmerDashboard />} />
         <Route path="/buyerDashboard" element={<BuyerDashBoard />} />
 
-        <Route path="/buyer/checkout" element={<BuyerCheckout />} />
+        
+        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
       </Routes>
       <Toaster />
     </div>
