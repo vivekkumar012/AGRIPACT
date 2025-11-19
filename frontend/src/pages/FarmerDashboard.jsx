@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Plus, Edit2, Trash2, LogOut, X, MapPin, Tag, Leaf, Package } from "lucide-react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Backend_URL } from "../../utils/utils";
 
 const FarmerDashboard = () => {
   const [activeTab, setActiveTab] = useState("products");
@@ -19,7 +20,7 @@ const FarmerDashboard = () => {
     price: "",
   });
 
-  const API_URL = "http://localhost:3001/api/v1";
+  const API_URL = `${Backend_URL}`;
   const navigate = useNavigate();
 
   useEffect(() => {

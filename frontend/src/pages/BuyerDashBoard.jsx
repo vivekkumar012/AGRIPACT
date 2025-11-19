@@ -12,6 +12,7 @@ import {
   Leaf,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import { Backend_URL } from "../../utils/utils";
 
 const BuyerDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -29,7 +30,7 @@ const BuyerDashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        "http://localhost:3001/api/v1/product/allproducts",
+        `${Backend_URL}/product/allproducts`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

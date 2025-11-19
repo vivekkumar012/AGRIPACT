@@ -4,6 +4,7 @@ import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import w from "../assets/w.png";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Backend_URL } from "../../utils/utils";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -31,7 +32,7 @@ function Register() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/v1/user/register",
+        `${Backend_URL}/user/register`,
         formData
       );
       if (response.status == 200) {

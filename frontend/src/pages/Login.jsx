@@ -4,6 +4,7 @@ import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import w from "../assets/w.png";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Backend_URL } from "../../utils/utils.js";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +30,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3001/api/v1/user/login", formData);
+      const res = await axios.post(`${Backend_URL}/user/login`, formData);
       if(res.status == 200) {
         const {user, token} = res.data;
         localStorage.setItem("token", token);
