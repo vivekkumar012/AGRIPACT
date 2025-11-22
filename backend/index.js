@@ -37,7 +37,7 @@ app.use("/api/v1/product", productRouter);
 app.use("/api/v1/order", orderRouter);
 
 
-const port = 3001 || process.env.PORT;
+const port = 3001;
 
 app.listen(port, () => {
     console.log(`App is listening on Port${port}`)
