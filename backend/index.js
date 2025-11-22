@@ -14,8 +14,10 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
+    "https://agripact-mu.vercel.app",
     "https://agripact-mu.vercel.app/"
 ];
+
 
 app.get("/", (req, res) => {
     res.send("Hi I am full stack developer from Biharrr")
