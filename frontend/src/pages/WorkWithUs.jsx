@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50 p-6">
       <div className="max-w-xl bg-white shadow-md rounded-2xl p-8 border border-green-100 text-center">
-        <h3 className="text-3xl font-bold text-green-800 mb-4">Our Services</h3>
+        <h3 className="text-3xl font-bold text-green-800 mb-4">Work with Us</h3>
 
         <button
           onClick={() => window.history.back()}

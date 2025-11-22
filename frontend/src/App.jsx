@@ -14,6 +14,8 @@ import BuyerDashBoard from "./pages/BuyerDashBoard";
 import PaymentPage from "./pages/PaymentPage";
 import OrderSuccess from "./pages/OrderSuccess";
 
+import WorkWithUs from "./pages/WorkWithUs";
+
 function App() {
   return (
     <div>
@@ -24,6 +26,7 @@ function App() {
 
         <Route path="/guidelines" element={<Guidelines />} />
         <Route path="/about" element={<About />} />
+        <Route path="/work" element={<WorkWithUs />} />
 
         <Route path="/farmerDashboard" element={<FarmerDashboard />} />
         <Route path="/buyerDashboard" element={<BuyerDashBoard />} />
