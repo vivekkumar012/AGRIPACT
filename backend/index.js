@@ -13,14 +13,26 @@ import orderRouter from './Routes/orderRouter.js';
 dotenv.config();
 const app = express();
 
+const allowedOrigins = [
+    "https://agripact-mu.vercel.app/"
+];
+
 app.get("/", (req, res) => {
     res.send("Hi I am full stack developer from Biharrr")
 })
 //Middlewares
 app.use(cors({
-    origin:'http://localhost:5173',
-    credentials: true
-}))
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express.json());
 app.use(cookieParser());
 
