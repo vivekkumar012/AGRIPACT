@@ -1,8 +1,6 @@
-import {userModel} from "../Models/userModel.js";
+import { userModel } from "../Models/userModel.js";
 import jwt from "jsonwebtoken"
-import bcrypt, { hash } from "bcrypt"
-import validator from "validator"
-import cookieParser from 'cookie-parser';
+import bcrypt from "bcrypt"
 
 // Register User
 export const registerUser = async (req, res) => {
